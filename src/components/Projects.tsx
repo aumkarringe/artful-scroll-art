@@ -34,34 +34,57 @@ const projects = [
 export const Projects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target as HTMLElement;
-            const scrollProgress = Math.min(
-              (entry.intersectionRatio * 2),
-              1
-            );
-            
-            target.style.opacity = scrollProgress.toString();
-            target.style.transform = `translateY(${(1 - scrollProgress) * 50}px) scale(${0.9 + scrollProgress * 0.1})`;
+    // Scroll animation handler for parallax and fade effects
+    const handleScroll = () => {
+      projectRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+
+        const rect = ref.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const isVisible = rect.top < windowHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          // Calculate scroll progress (0 to 1)
+          const scrollProgress = Math.max(
+            0,
+            Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height))
+          );
+
+          // Fade in effect
+          const opacity = Math.min(1, scrollProgress * 2);
+          ref.style.opacity = opacity.toString();
+
+          // Parallax transform with rotation
+          const translateY = (1 - scrollProgress) * 100;
+          const scale = 0.85 + scrollProgress * 0.15;
+          const rotateX = (1 - scrollProgress) * -5;
+          
+          ref.style.transform = `
+            translateY(${translateY}px) 
+            scale(${scale})
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+          `;
+
+          // Image parallax effect
+          const imageRef = imageRefs.current[index];
+          if (imageRef) {
+            const imageTranslateY = (scrollProgress - 0.5) * -30;
+            const imageScale = 1 + (scrollProgress * 0.1);
+            imageRef.style.transform = `translateY(${imageTranslateY}px) scale(${imageScale})`;
           }
-        });
-      },
-      { 
-        threshold: Array.from({ length: 20 }, (_, i) => i * 0.05),
-        rootMargin: "-100px"
-      }
-    );
+        }
+      });
+    };
 
-    projectRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    // Initial call and scroll listener
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-    return () => observer.disconnect();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -84,13 +107,21 @@ export const Projects = () => {
               <div className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
                 <div className={index % 2 === 1 ? 'md:col-start-2' : ''}>
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
-                    <div className="relative overflow-hidden rounded-2xl border border-border shadow-card hover:shadow-glow transition-all duration-500">
+                    <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-3xl opacity-20 group-hover:opacity-40 transition-all duration-700" />
+                    <div 
+                      ref={(el) => (imageRefs.current[index] = el)}
+                      className="relative overflow-hidden rounded-2xl border border-border shadow-card hover:shadow-glow transition-all duration-700"
+                      style={{ 
+                        transformStyle: 'preserve-3d',
+                        willChange: 'transform'
+                      }}
+                    >
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-auto transform group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-auto transform group-hover:scale-110 transition-transform duration-1000"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   </div>
                 </div>
