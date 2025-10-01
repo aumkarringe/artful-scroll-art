@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, Linkedin, Github, Youtube } from "lucide-react";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -111,15 +111,6 @@ export const Contact = () => {
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6" />
-                </a>
-                <a 
-                  href="https://www.youtube.com/@AumkarR/videos"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 bg-card border border-border rounded-xl hover:border-primary hover:shadow-glow transition-all duration-300"
-                  aria-label="YouTube"
-                >
-                  <Youtube className="w-6 h-6" />
                 </a>
               </div>
             </div>
