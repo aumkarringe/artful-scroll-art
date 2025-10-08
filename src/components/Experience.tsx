@@ -61,8 +61,9 @@ export const Experience: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      itemRefs.current.forEach((ref) => {
+      itemRefs.current.forEach((ref, index) => {
         if (!ref) return;
+
         const rect = ref.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         const isVisible = rect.top < windowHeight && rect.bottom > 0;
@@ -72,12 +73,15 @@ export const Experience: React.FC = () => {
             0,
             Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height))
           );
+
           const opacity = Math.min(1, scrollProgress * 2);
-          const translateY = (1 - scrollProgress) * 50; // slide-up effect
-          const scale = 0.95 + scrollProgress * 0.05;
+          const translateY = (1 - scrollProgress) * 50;
+          const rotateX = (1 - scrollProgress) * -10; // 3D rotation
+          const scale = 0.9 + scrollProgress * 0.1;
 
           ref.style.opacity = opacity.toString();
-          ref.style.transform = `translateY(${translateY}px) scale(${scale})`;
+          ref.style.transform = `translateY(${translateY}px) rotateX(${rotateX}deg) scale(${scale})`;
+          ref.style.transition = `transform 0.8s ease-out, opacity 0.8s ease-out`;
         }
       });
     };
@@ -91,7 +95,7 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="py-32 px-6 bg-gradient-to-b from-background to-muted/20"
+      className="py-32 px-6 bg-gradient-to-b from-background to-muted/10"
     >
       <div className="container max-w-6xl mx-auto">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
@@ -103,16 +107,21 @@ export const Experience: React.FC = () => {
             <div
               key={idx}
               ref={(el) => (itemRefs.current[idx] = el)}
-              className="opacity-0 bg-card p-8 rounded-2xl shadow-card hover:shadow-glow transition-all duration-700"
+              className="opacity-0 bg-card p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 hover:rotate-1 hover:scale-105"
             >
-              <h3 className="text-3xl font-semibold mb-1">{exp.title}</h3>
-              <p className="text-lg text-muted-foreground mb-2">
+              <h3 className="text-3xl font-semibold mb-1 text-gradient">
+                {exp.title}
+              </h3>
+              <p className="text-lg text-muted-foreground mb-2 font-medium">
                 {exp.company} – {exp.location}
               </p>
-              <p className="text-sm text-muted-foreground mb-4">{exp.date}</p>
+              <p className="text-sm text-muted-foreground mb-4 italic">{exp.date}</p>
               <ul className="list-disc list-inside space-y-2">
                 {exp.responsibilities.map((resp, i) => (
-                  <li key={i} className="text-base text-muted-foreground">
+                  <li
+                    key={i}
+                    className="text-base text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
                     {resp}
                   </li>
                 ))}
