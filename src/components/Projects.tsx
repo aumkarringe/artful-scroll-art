@@ -5,7 +5,7 @@ import kriyataImage from "@/assets/kriyata.png";
 import nutrimatchImage from "@/assets/nutrimatch.png";
 import smartscheduleImage from "@/assets/smartschedule.png";
 import customerSegImage from "@/assets/nutrimatch.png";
-import vrArImage from "@/assets/vrimage.jpg";
+import vrArImage from "@/assets/kriyata.png";
 
 const projects = [
   {
