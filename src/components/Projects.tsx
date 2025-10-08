@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import houseupImage from "@/assets/houseup.png";
 import kriyataImage from "@/assets/kriyata.png";
 import nutrimatchImage from "@/assets/nutrimatch.png";
+import smartscheduleImage from "@/assets/smartschedule.png";
+import customerSegImage from "@/assets/customerSegmentation.png";
+import vrArImage from "@/assets/vrAr.png";
 
 const projects = [
   {
@@ -10,7 +13,7 @@ const projects = [
     description: "A comprehensive property management platform with advanced search and listing features.",
     image: houseupImage,
     tech: ["React", "Node.js", "PostgreSQL"],
-    github: "#",
+    github: "https://github.com/siddhesh-pawar/StudentNest",
     demo: "#"
   },
   {
@@ -19,25 +22,49 @@ const projects = [
     image: kriyataImage,
     tech: ["React", "TypeScript", "Firebase"],
     github: "#",
-    demo: "#"
+    demo: "https://kriyata.infinityfreeapp.com/?i=1"
   },
   {
     title: "NutriMatch Pro",
     description: "AI-powered nutrition matchmaking platform helping users find their perfect dietary balance.",
     image: nutrimatchImage,
     tech: ["React", "Python", "TensorFlow"],
+    github: "https://github.com/aumkarringe/NutriMatchPro",
+    demo: "#"
+  },
+  {
+    title: "SmartSchedule",
+    description: "A dynamic scheduling app to manage tasks and optimize productivity.",
+    image: smartscheduleImage,
+    tech: ["React", "TypeScript", "CSS"],
     github: "#",
+    demo: "https://aumkarringe.github.io/"
+  },
+  {
+    title: "Customer Segmentation using Unsupervised Learning",
+    description: "A machine learning project to segment customers based on behavior using unsupervised learning techniques.",
+    image: customerSegImage,
+    tech: ["Python", "Pandas", "Scikit-Learn"],
+    github: "https://github.com/Viraj7k/Customer-Segmentaion-using-Unsupervised-Learning",
+    demo: "#"
+  },
+  {
+    title: "Virtual Reality AR Encyclopedia",
+    description: "An immersive VR/AR encyclopedia platform for interactive learning and exploration.",
+    image: vrArImage,
+    tech: ["Unity", "C#", "AR/VR"],
+    github: "https://github.com/aumkarringe/Virtual-Reality-AR-Enclycopedia",
     demo: "#"
   }
 ];
 
+// The rest of your Projects component stays the same
 export const Projects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // Scroll animation handler for parallax and fade effects
     const handleScroll = () => {
       projectRefs.current.forEach((ref, index) => {
         if (!ref) return;
@@ -47,21 +74,17 @@ export const Projects = () => {
         const isVisible = rect.top < windowHeight && rect.bottom > 0;
 
         if (isVisible) {
-          // Calculate scroll progress (0 to 1)
           const scrollProgress = Math.max(
             0,
             Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height))
           );
 
-          // Fade in effect
-          const opacity = Math.min(1, scrollProgress * 2);
-          ref.style.opacity = opacity.toString();
+          ref.style.opacity = Math.min(1, scrollProgress * 2).toString();
 
-          // Parallax transform with rotation
           const translateY = (1 - scrollProgress) * 100;
           const scale = 0.85 + scrollProgress * 0.15;
           const rotateX = (1 - scrollProgress) * -5;
-          
+
           ref.style.transform = `
             translateY(${translateY}px) 
             scale(${scale})
@@ -69,7 +92,6 @@ export const Projects = () => {
             rotateX(${rotateX}deg)
           `;
 
-          // Image parallax effect
           const imageRef = imageRefs.current[index];
           if (imageRef) {
             const imageTranslateY = (scrollProgress - 0.5) * -30;
@@ -80,10 +102,8 @@ export const Projects = () => {
       });
     };
 
-    // Initial call and scroll listener
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -94,7 +114,7 @@ export const Projects = () => {
           Featured <span className="text-gradient">Projects</span>
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-20 max-w-2xl mx-auto">
-          Showcasing my best work in web development and design
+          Showcasing my best work in web development, design, and AI/ML projects
         </p>
 
         <div className="space-y-40">
