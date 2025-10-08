@@ -4,7 +4,7 @@ import houseupImage from "@/assets/houseup.png";
 import kriyataImage from "@/assets/kriyata.png";
 import nutrimatchImage from "@/assets/nutrimatch.png";
 import smartscheduleImage from "@/assets/smartschedule.png";
-import customerSegImage from "@/assets/customer.jpg";
+import customerSegImage from "@/assets/nutrimatch.png";
 import vrArImage from "@/assets/vrimage.jpg";
 
 const projects = [
@@ -14,14 +14,14 @@ const projects = [
     image: houseupImage,
     tech: ["React", "Node.js", "PostgreSQL"],
     github: "https://github.com/siddhesh-pawar/StudentNest",
-    demo: "#"
+    demo: "https://github.com/siddhesh-pawar/StudentNest"
   },
   {
     title: "Kriyata",
     description: "Sports tournament management system with lightning-fast registration and automated fixtures.",
     image: kriyataImage,
     tech: ["React", "TypeScript", "Firebase"],
-    github: "#",
+    github: "https://kriyata.infinityfreeapp.com/?i=1",
     demo: "https://kriyata.infinityfreeapp.com/?i=1"
   },
   {
@@ -30,14 +30,14 @@ const projects = [
     image: nutrimatchImage,
     tech: ["React", "Python", "TensorFlow"],
     github: "https://github.com/aumkarringe/NutriMatchPro",
-    demo: "#"
+    demo: "https://github.com/aumkarringe/NutriMatchPro"
   },
   {
     title: "SmartSchedule",
     description: "A dynamic scheduling app to manage tasks and optimize productivity.",
     image: smartscheduleImage,
     tech: ["React", "TypeScript", "CSS"],
-    github: "#",
+    github: "https://aumkarringe.github.io/",
     demo: "https://aumkarringe.github.io/"
   },
   {
@@ -46,7 +46,7 @@ const projects = [
     image: customerSegImage,
     tech: ["Python", "Pandas", "Scikit-Learn"],
     github: "https://github.com/Viraj7k/Customer-Segmentaion-using-Unsupervised-Learning",
-    demo: "#"
+    demo: "https://github.com/Viraj7k/Customer-Segmentaion-using-Unsupervised-Learning"
   },
   {
     title: "Virtual Reality AR Encyclopedia",
@@ -54,7 +54,7 @@ const projects = [
     image: vrArImage,
     tech: ["Unity", "C#", "AR/VR"],
     github: "https://github.com/aumkarringe/Virtual-Reality-AR-Enclycopedia",
-    demo: "#"
+    demo: "https://github.com/aumkarringe/Virtual-Reality-AR-Enclycopedia"
   }
 ];
 
