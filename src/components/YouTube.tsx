@@ -121,7 +121,7 @@ export const YouTube = () => {
                       Join me on my YouTube channel for video editing and Graphic Design for fun
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {["React", "TypeScript", "Web Development", "AI/ML", "Tutorials"].map((tag) => (
+                      {["Video Editing", "Graphic Design", "Creativity"].map((tag) => (
                         <span
                           key={tag}
                           className="px-3 py-1 bg-red-600/10 border border-red-600/30 rounded-full text-sm text-red-600"
