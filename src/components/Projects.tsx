@@ -3,9 +3,7 @@ import { ExternalLink, Github } from "lucide-react";
 import houseupImage from "@/assets/houseup.png";
 import kriyataImage from "@/assets/kriyata.png";
 import nutrimatchImage from "@/assets/nutrimatch.png";
-import smartscheduleImage from "@/assets/smartschedule.png";
-import customerSegImage from "@/assets/customerSegmentation.png";
-import vrArImage from "@/assets/vrAr.png";
+
 
 const projects = [
   {
@@ -35,7 +33,7 @@ const projects = [
   {
     title: "SmartSchedule",
     description: "A dynamic scheduling app to manage tasks and optimize productivity.",
-    image: smartscheduleImage,
+
     tech: ["React", "TypeScript", "CSS"],
     github: "#",
     demo: "https://aumkarringe.github.io/"
@@ -43,7 +41,6 @@ const projects = [
   {
     title: "Customer Segmentation using Unsupervised Learning",
     description: "A machine learning project to segment customers based on behavior using unsupervised learning techniques.",
-    image: customerSegImage,
     tech: ["Python", "Pandas", "Scikit-Learn"],
     github: "https://github.com/Viraj7k/Customer-Segmentaion-using-Unsupervised-Learning",
     demo: "#"
@@ -51,7 +48,6 @@ const projects = [
   {
     title: "Virtual Reality AR Encyclopedia",
     description: "An immersive VR/AR encyclopedia platform for interactive learning and exploration.",
-    image: vrArImage,
     tech: ["Unity", "C#", "AR/VR"],
     github: "https://github.com/aumkarringe/Virtual-Reality-AR-Enclycopedia",
     demo: "#"
