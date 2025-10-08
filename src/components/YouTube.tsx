@@ -25,12 +25,18 @@ export const YouTube = () => {
     return () => observer.disconnect();
   }, []);
 
+  const youtubeLink = "https://www.youtube.com/@AumkarR/videos";
+
   const handleSubscribe = () => {
-    window.open("https://www.youtube.com/@AumkarR/videos", "_blank");
+    window.open(youtubeLink, "_blank");
   };
 
   return (
-    <section id="youtube" ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-muted/20 to-background">
+    <section
+      id="youtube"
+      ref={sectionRef}
+      className="py-32 px-6 bg-gradient-to-b from-muted/20 to-background"
+    >
       <div className="container max-w-6xl mx-auto">
         {/* Channel Header */}
         <div className="text-center mb-16 observe-animation">
@@ -43,7 +49,7 @@ export const YouTube = () => {
             </h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Tutorials, coding challenges, and tech insights
+            Graphic Design, Video Editing
           </p>
           <Button
             size="lg"
@@ -56,13 +62,16 @@ export const YouTube = () => {
         </div>
 
         {/* Channel Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 observe-animation" style={{ animationDelay: "0.2s" }}>
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 observe-animation"
+          style={{ animationDelay: "0.2s" }}
+        >
           <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-red-600 hover:shadow-glow transition-all duration-300 group">
             <div className="inline-flex p-4 bg-gradient-to-r from-red-600/20 to-red-700/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
               <Youtube className="w-8 h-8 text-red-600" />
             </div>
             <h3 className="text-3xl font-bold mb-2">Videos</h3>
-            <p className="text-muted-foreground">Tech & Coding Content</p>
+            <p className="text-muted-foreground">Creativity</p>
           </div>
 
           <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-red-600 hover:shadow-glow transition-all duration-300 group">
@@ -109,8 +118,7 @@ export const YouTube = () => {
                       @AumkarR
                     </h3>
                     <p className="text-muted-foreground mb-4">
-                      Join me on my YouTube channel for coding tutorials, tech reviews, and insights into frontend development and AI/ML. 
-                      Subscribe to stay updated with the latest content!
+                      Join me on my YouTube channel for video editing and Graphic Design for fun
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {["React", "TypeScript", "Web Development", "AI/ML", "Tutorials"].map((tag) => (
