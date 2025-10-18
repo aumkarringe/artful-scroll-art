@@ -34,7 +34,7 @@ const experiences: ExperienceItem[] = [
     ],
   },
   {
-    title: "Senior Data Analyst",
+    title: "Software Engineer II",
     company: "Microscan",
     location: "Mumbai, India",
     date: "Jul 2022 – Jul 2023",

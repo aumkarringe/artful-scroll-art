@@ -15,7 +15,7 @@ const skillCategories = [
   {
     icon: Brain,
     title: "AI/ML",
-    skills: ["TensorFlow", "PyTorch", "scikit-learn", "Python", "Data Analysis"]
+    skills: ["TensorFlow", "PyTorch", "scikit-learn", "Python", "Data Analysis", "RAG"]
   },
   {
     icon: Palette,
